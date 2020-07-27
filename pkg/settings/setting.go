@@ -184,12 +184,18 @@ func GetEnvKey(key string) string {
 }
 
 func getMetadataConfig() string {
-	branch := os.Getenv("RANCHER_METADATA_BRANCH")
-	if branch == "" {
-		branch = "dev-v2.5"
-	}
+	/*
+		branch := os.Getenv("RANCHER_METADATA_BRANCH")
+		if branch == "" {
+			branch = "dev-v2.5"
+		}
+			data := map[string]interface{}{
+				"url":                      fmt.Sprintf("https://releases.rancher.com/kontainer-driver-metadata/%s/data.json", branch),
+				"refresh-interval-minutes": "1440",
+			}
+	*/
 	data := map[string]interface{}{
-		"url":                      fmt.Sprintf("https://releases.rancher.com/kontainer-driver-metadata/%s/data.json", branch),
+		"url":                      fmt.Sprintf("https://raw.githubusercontent.com/noironetworks/kontainer-driver-metadata/aci_cni/data/data.json"),
 		"refresh-interval-minutes": "1440",
 	}
 	ans, err := json.Marshal(data)

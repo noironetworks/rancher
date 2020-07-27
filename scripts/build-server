@@ -25,7 +25,7 @@ CGO_ENABLED=0 go build -i -tags k8s \
   -o bin/rancher
 
 if  [ -n "$RANCHER_METADATA_BRANCH" ]; then
-    curl -sLf https://releases.rancher.com/kontainer-driver-metadata/${RANCHER_METADATA_BRANCH}/data.json > bin/data.json
+    curl -sLf https://raw.githubusercontent.com/noironetworks/kontainer-driver-metadata/aci_cni/data/data.json > bin/data.json
 else
     echo '{}' > bin/data.json
 fi
